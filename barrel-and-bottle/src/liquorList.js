@@ -17,6 +17,7 @@ function DrinksList() {
         {drinks.map(drink => (
           <li key={drink.id}>
             <p>No.: {drink.id}</p>
+            <img src={drink.cover} alt={drink.cover}></img>
             <p>Name: {drink.name}</p>
             <p>Percentage: {drink.percentage}</p>
             <p>Brewerie: {drink.breweries}</p>
