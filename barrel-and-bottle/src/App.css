@@ -1,3 +1,62 @@
+.App{
+  font-size: 20px;
+  background-image: url('https://static.vecteezy.com/ti/vetor-gratis/p1/12246165-contorno-de-neon-azul-de-uma-garrafa-de-vinho-com-um-rotulo-e-um-copo-em-um-fundo-preto-icone-da-barra-vetor.jpg');
+  background-size: cover;
+  color: white;
+}
+
 .h1{
   text-align: center;
+  animation: colorChange 5s infinite;
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+@keyframes colorChange {
+  0% { color: red; }
+  25% { color: blue; }
+  50% { color: green; }
+  50% {color: white;}
+  75% { color: orange; }
+  100% { color: purple; }
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;  
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.column {
+  width: calc(33.33% - 10px);
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.column:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  background-color: rgb(119, 7, 7);
+  color: white;;
+}
+
+.column img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.column p {
+  margin: 5px 0;
+}
+
+
