@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+  }
+  
+  .login-form {
+    color: darkgreen;
+    text-align: center;
+    font-size: 35px;
+  }
+  
+button{
+    font-size: 30px;
+}
+button:hover{
+    background-color:rgb(8, 8, 110) ;
+    color:white;
+    transform: scale(1.50);
+    cursor: pointer;
+}
