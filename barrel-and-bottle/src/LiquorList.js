@@ -3,7 +3,7 @@ import Cart from './cart';
 
 
 
-function DrinksList() {
+function LiquorList() {
   const [drinks, setDrinks] = useState([]);
   const [cart, setCart] = useState([]);
 
@@ -25,7 +25,7 @@ function DrinksList() {
 
   return (
     <div className='container'>
-      <h1>Where every sip tells a story.</h1>
+      <h2>Where every sip tells a story.</h2>
       <div className='row'>
         {drinks.map(drink => (
           <div className='column' key={drink.id}>
@@ -43,4 +43,4 @@ function DrinksList() {
   );
 }
 
-export default DrinksList;
+export default LiquorList;
