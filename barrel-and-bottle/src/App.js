@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Twemoji } from 'react-emoji-render';
-import LiquorList from './Login';
+import LiquorList from './LiquorList';
 import { BrowserRouter } from 'react-router-dom';
 
 
@@ -10,11 +9,12 @@ function App() {
     <div className="App">
       <div className="liquor">
          <div className="h1">
+         <h1>Where every sip tells a story.</h1>
       </div>
-      </div>
-      <BrowserRouter>
+       <BrowserRouter>
        <LiquorList />
       </BrowserRouter>
+      </div>
     </div>
   );
 }
