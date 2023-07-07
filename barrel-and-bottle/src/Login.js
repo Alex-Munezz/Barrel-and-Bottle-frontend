@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Login.css'
 
 function UserLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email_address, setEmail] = useState('');
+
   const navigate = useNavigate();
 
   const handleRegistration = async (e) => {
@@ -20,11 +22,7 @@ function UserLogin() {
       });
 
       if (response.ok) {
-        // Registration successful, fetch drinks data
-        const drinksResponse = await fetch('http://127.0.0.1:5000/drinks');
-        const drinksData = await drinksResponse.json();
-        // Navigate to the LiquorList component with drinks data
-        navigate('/LiquorList', { state: { drinks: drinksData } });
+        navigate('/LiquorList');
       } else {
         console.error('User registration failed');
       }
@@ -34,38 +32,40 @@ function UserLogin() {
   };
 
   return (
-    <div>
-      <h2>Registration</h2>
+    <div className='login-form'>
+      <h2>Barrel & Bottle</h2>
+      <h2>Please create an account to continue to view our products: </h2><br></br>
+      <fieldset className='loginjs'>
       <form onSubmit={handleRegistration}>
         <div>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Username</label><br></br>
           <input
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
+        </div><br></br>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password</label><br></br>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
+        </div><br></br>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email_address">Email</label><br></br>
           <input
             type="email"
             id="email"
             value={email_address}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
+        </div><br></br>
         <button type="submit">Create Account</button>
-      </form>
+      </form></fieldset>
     </div>
   );
 }
