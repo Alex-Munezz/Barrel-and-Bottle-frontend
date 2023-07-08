@@ -11,7 +11,7 @@ function Admin() {
   }, []);
 
   const fetchDrinks = () => {
-    fetch('http://127.0.0.1:5000/drinks')
+    fetch('http://127.0.0.1:5555/drinks')
       .then(response => response.json())
       .then(drinks => setDrinks(drinks))
       .catch(error => console.error(error));
@@ -46,7 +46,7 @@ function Admin() {
   };
 
   const updateDrink = () => {
-    fetch(`http://127.0.0.1:5000/drinks/${selectedDrink.id}`, {
+    fetch(`http://127.0.0.1:5555/drinks/${selectedDrink.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

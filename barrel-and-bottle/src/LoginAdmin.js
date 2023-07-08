@@ -10,7 +10,7 @@ function AdminLogin() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://http://127.0.0.1:5000/admins?username=${username}&password=${password}`);
+      const response = await fetch(`http://http://127.0.0.1:5555/admins?username=${username}&password=${password}`);
 
       if (response.ok) {
         const adminDetails = await response.json();
