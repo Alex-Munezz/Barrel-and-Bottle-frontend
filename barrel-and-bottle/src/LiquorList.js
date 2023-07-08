@@ -47,7 +47,7 @@ function LiquorList() {
           </div>
         ))}
       </div>
-      <Link to="/LoginAdmin">Admin Page</Link>
+      <Link to="/Admin">Admin Page</Link>
       <Cart cart={cart} removeFromCart={removeFromCart} />
     </div>
   );
