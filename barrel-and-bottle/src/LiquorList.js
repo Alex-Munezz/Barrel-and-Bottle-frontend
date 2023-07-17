@@ -12,7 +12,7 @@ function LiquorList() {
   }, []);
 
   const fetchDrinks = () => {
-    fetch('http://127.0.0.1:5555/drinks')
+    fetch('http://127.0.0.1:5000/drinks')
       .then(response => response.json())
       .then(drinks => setDrinks(drinks))
       .catch(error => console.error(error));

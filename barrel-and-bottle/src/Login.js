@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'
+import './SignUp.css'
 
 function UserLogin() {
   const [username, setUsername] = useState('');
@@ -13,7 +13,7 @@ function UserLogin() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:5555/customers', {
+      const response = await fetch('http://127.0.0.1:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ function UserLogin() {
   return (
     <div className='login-form'>
       <h2>Barrel & Bottle</h2>
-      <h2>Please create an account to continue to view our products: </h2><br></br>
+      <h2>Please login to continue to view our products: </h2><br></br>
       <fieldset className='loginjs'>
       <form onSubmit={handleRegistration}>
         <div>
@@ -64,10 +64,9 @@ function UserLogin() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div><br></br>
-        <button type="submit">Create Account</button>
+        <button type="submit">Login</button>
       </form></fieldset>
     </div>
   );
 }
-
 export default UserLogin;

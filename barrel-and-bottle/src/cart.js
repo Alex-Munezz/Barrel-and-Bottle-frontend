@@ -13,7 +13,7 @@ function Cart({ cart, removeFromCart }) {
       alert('Please select a checkout method.');
       return;
     }
-
+  
     // Perform the checkout process based on the selected method
     if (checkoutMethod === 'mpesa') {
       // Perform M-Pesa checkout logic
@@ -22,10 +22,63 @@ function Cart({ cart, removeFromCart }) {
       // Perform bank account checkout logic
       alert('Bank account checkout successful!');
     }
-
+  
     // Clear the cart by removing all items
     cart.forEach(drink => removeFromCart(drink.id));
+  
+    // Fetch the customer ID from the backend
+    fetch('http://127.0.0.1:5000/customers', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Failed to fetch customer data');
+        }
+      })
+      .then(customerData => {
+        if (customerData.length > 0) {
+          const customer_id = customerData[0].id; // Assuming the customer ID is in the first item of the response
+          const saleData = {
+            customer_id: customer_id,
+            drink_id: cart[0].id
+          };
+  
+          // Create a new sale in the backend
+          fetch('http://127.0.0.1:5000/sales', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(saleData)
+          })
+            .then(response => {
+              if (response.ok) {
+                // Sale created successfully
+                // alert('Sale created successfully!');
+              } else {
+                throw new Error('Failed to create sale');
+              }
+            })
+            .catch(error => {
+              console.error(error);
+              alert('Failed to create sale');
+            });
+        } else {
+          throw new Error('No customer found');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        alert('Failed to fetch customer data');
+      });
   };
+  
+  
 
   return (
     <div className='cart-container'>

@@ -4,14 +4,17 @@ import { useNavigate } from 'react-router-dom';
 function AdminLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email_address, setEmail_Adress] = useState('');
   const navigate= useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://http://127.0.0.1:5555/admins?username=${username}&password=${password}`);
-
+      const response = await fetch(`http://127.0.0.1:5000/register?username=${username}&password=${password}&email_address=${email_address}`, {
+        method: 'GET'
+      });
+         
       if (response.ok) {
         const adminDetails = await response.json();
 
@@ -49,6 +52,15 @@ function AdminLogin() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="email address">Email</label>
+          <input
+            type="email"
+            id="email"
+            value={email_address}
+            onChange={(e) => setEmail_Adress(e.target.value)}
           />
         </div>
         <button type="submit">Login</button>

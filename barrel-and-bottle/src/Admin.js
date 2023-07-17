@@ -11,7 +11,7 @@ function Admin() {
   }, []);
 
   const fetchDrinks = () => {
-    fetch('http://127.0.0.1:5555/drinks')
+    fetch('http://127.0.0.1:5000/drinks')
       .then(response => response.json())
       .then(drinks => setDrinks(drinks))
       .catch(error => console.error(error));
@@ -46,7 +46,7 @@ function Admin() {
   };
 
   const updateDrink = () => {
-    fetch(`http://127.0.0.1:5555/drinks/${selectedDrink.id}`, {
+    fetch(`http://127.0.0.1:5000/drinks/${selectedDrink.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -55,13 +55,12 @@ function Admin() {
     })
       .then(response => {
         if (response.ok) {
-          return response.json(); // Parse response JSON
+          return response.json(); 
         } else {
           throw new Error('Failed to update drink');
         }
       })
       .then(updatedDrink => {
-        // Find the updated drink in the drinks list
         const updatedDrinks = drinks.map(drink => {
           if (drink.id === updatedDrink.id) {
             return updatedDrink;
@@ -72,7 +71,7 @@ function Admin() {
 
         setDrinks(updatedDrinks);
         setSelectedDrink(null);
-        setUpdatedFields({});
+        setUpdatedFields({}); 
       })
       .catch(error => console.error(error));
   };
